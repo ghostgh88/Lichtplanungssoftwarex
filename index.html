@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Latest sports news, scores, highlights, and analysis for NFL, NBA, MLB, NHL, Soccer, and more.">
+    <meta name="keywords" content="sports, news, scores, NFL, NBA, MLB, NHL, soccer, football, basketball, baseball, hockey">
+    <meta name="author" content="ESPN">
+    <meta property="og:title" content="ESPN | Sports News, Scores, Highlights">
+    <meta property="og:description" content="Your go-to source for sports news, scores, and highlights across all major sports.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://espn.com">
+    <title>ESPN | Sports News, Scores, Highlights</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 1rem 0;
+            border-bottom: 4px solid #ff0033;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .logo span {
+            color: #ff0033;
+        }
+
+        .nav-main ul {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-main a {
+            color: #fff;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-main a:hover {
+            color: #ff0033;
+        }
+
+        .nav-user {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-user a {
+            color: #fff;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .search-bar button {
+            background-color: #ff0033;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #000;
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .hero-content {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .hero-main {
+            flex: 2;
+        }
+
+        .hero-main img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .hero-side {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .hero-side-item {
+            flex: 1;
+        }
+
+        .hero-side-item img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .hero-text {
+            padding: 1rem 0;
+        }
+
+        .hero-text h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text p {
+            color: #ccc;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        /* News Section */
+        .news-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #ff0033;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .news-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .news-content {
+            padding: 1rem;
+        }
+
+        .news-category {
+            color: #ff0033;
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-excerpt {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #ff0033;
+        }
+
+        .scoreboard-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .scoreboard-teams {
+            flex: 2;
+        }
+
+        .scoreboard-score {
+            flex: 1;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .standings-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .standings-table th, .standings-table td {
+            padding: 0.5rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .standings-table th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+
+        .standings-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links h4 {
+            color: #ff0033;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ff0033;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #333;
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-content {
+                flex-direction: column;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-main img, .hero-side-item img {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo"><span>ESPN</span></div>
+            <nav class="nav-main">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">NFL</a></li>
+                    <li><a href="#">NBA</a></li>
+                    <li><a href="#">MLB</a></li>
+                    <li><a href="#">NHL</a></li>
+                    <li><a href="#">Soccer</a></li>
+                    <li><a href="#">More</a></li>
+                </ul>
+            </nav>
+            <div class="nav-user">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <a href="#"><i class="fas fa-user"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-main">
+                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" alt="Football game action shot" class="hero-image">
+                    <div class="hero-text">
+                        <h1>NFL Season Preview: Top Teams to Watch</h1>
+                        <p>Breaking down the contenders and dark horses for the upcoming season</p>
+                    </div>
+                </div>
+                <div class="hero-side">
+                    <div class="hero-side-item">
+                        <img src="https://images.unsplash.com/photo-1543351611-58f69d7c1781?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Basketball player dunking">
+                        <div class="hero-text">
+                            <h3>NBA Free Agency: Biggest Moves</h3>
+                        </div>
+                    </div>
+                    <div class="hero-side-item">
+                        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Baseball player hitting">
+                        <div class="hero-text">
+                            <h3>MLB Trade Deadline Winners</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <main class="news-section">
+            <h2>Latest News</h2>
+            <div class="news-grid">
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Baseball player in action">
+                    <div class="news-content">
+                        <div class="news-category">MLB</div>
+                        <h3 class="news-title">Yankees Acquire Star Pitcher in Blockbuster Trade</h3>
+                        <p class="news-excerpt">The New York Yankees have bolstered their rotation with the addition of a Cy Young contender ahead of the playoff push.</p>
+                        <div class="news-meta">
+                            <span>By John Smith</span>
+                            <span>2 hours ago</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1543351611-58f69d7c1781?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Basketball game">
+                    <div class="news-content">
+                        <div class="news-category">NBA</div>
+                        <h3 class="news-title">Warriors Sign Veteran Point Guard to One-Year Deal</h3>
+                        <p class="news-excerpt">Golden State adds depth to their backcourt with the signing of a former All-Star looking to revive his career.</p>
+                        <div class="news-meta">
+                            <span>By Sarah Johnson</span>
+                            <span>4 hours ago</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Football stadium">
+                    <div class="news-content">
+                        <div class="news-category">NFL</div>
+                        <h3 class="news-title">Top 10 NFL Quarterback Rankings for 2025 Season</h3>
+                        <p class="news-excerpt">We break down the best signal-callers heading into the new season, with some surprising names in the mix.</p>
+                        <div class="news-meta">
+                            <span>By Mike Davis</span>
+                            <span>6 hours ago</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Hockey player">
+                    <div class="news-content">
+                        <div class="news-category">NHL</div>
+                        <h3 class="news-title">Stanley Cup Champions Begin Title Defense With Win</h3>
+                        <p class="news-excerpt">The reigning champions showed no signs of a championship hangover in their season opener against a division rival.</p>
+                        <div class="news-meta">
+                            <span>By Chris Wilson</span>
+                            <span>8 hours ago</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Soccer player">
+                    <div class="news-content">
+                        <div class="news-category">Soccer</div>
+                        <h3 class="news-title">European Transfer Window: Biggest Deals So Far</h3>
+                        <p class="news-excerpt">From record-breaking fees to surprise moves, we analyze the most significant transfers of the summer window.</p>
+                        <div class="news-meta">
+                            <span>By David Martinez</span>
+                            <span>10 hours ago</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Tennis player">
+                    <div class="news-content">
+                        <div class="news-category">Tennis</div>
+                        <h3 class="news-title">US Open: Top Seeds Advance to Quarterfinals</h3>
+                        <p class="news-excerpt">The tournament favorites continue their march toward the finals with dominant performances in the round of 16.</p>
+                        <div class="news-meta">
+                            <span>By Emma Thompson</span>
+                            <span>12 hours ago</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>Live Scores</h3>
+                <div class="scoreboard-item">
+                    <div class="scoreboard-teams">
+                        <div>NY Yankees</div>
+                        <div>Boston Red Sox</div>
+                    </div>
+                    <div class="scoreboard-score">5-3 (B8)</div>
+                </div>
+                <div class="scoreboard-item">
+                    <div class="scoreboard-teams">
+                        <div>LA Lakers</div>
+                        <div>Golden State</div>
+                    </div>
+                    <div class="scoreboard-score">102-98 (Q4)</div>
+                </div>
+                <div class="scoreboard-item">
+                    <div class="scoreboard-teams">
+                        <div>Dallas Cowboys</div>
+                        <div>Philadelphia</div>
+                    </div>
+                    <div class="scoreboard-score">21-17 (4Q)</div>
+                </div>
+                <div class="scoreboard-item">
+                    <div class="scoreboard-teams">
+                        <div>Chicago Blackhawks</div>
+                        <div>Toronto Maple Leafs</div>
+                    </div>
+                    <div class="scoreboard-score">2-2 (P3)</div>
+                </div>
+                <a href="#" class="view-all">View All Scores →</a>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>NBA Standings</h3>
+                <table class="standings-table">
+                    <thead>
+                        <tr>
+                            <th>Eastern</th>
+                            <th>W</th>
+                            <th>L</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1. Milwaukee</td>
+                            <td>58</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>2. Boston</td>
+                            <td>57</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>3. Philadelphia</td>
+                            <td>54</td>
+                            <td>28</td>
+                        </tr>
+                        <tr>
+                            <td>4. Cleveland</td>
+                            <td>51</td>
+                            <td>31</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="#" class="view-all">Full Standings →</a>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Upcoming Games</h3>
+                <div class="upcoming-game">
+                    <div class="game-teams">NY Giants @ Dallas</div>
+                    <div class="game-time">Sun 4:25 PM ET</div>
+                </div>
+                <div class="upcoming-game">
+                    <div class="game-teams">LA Dodgers @ San Francisco</div>
+                    <div class="game-time">Tonight 10:05 PM ET</div>
+                </div>
+                <div class="upcoming-game">
+                    <div class="game-teams">Miami @ Denver</div>
+                    <div class="game-time">Tue 9:00 PM ET</div>
+                </div>
+                <a href="#" class="view-all">Full Schedule →</a>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Sports</h4>
+                    <ul>
+                        <li><a href="#">NFL</a></li>
+                        <li><a href="#">NBA</a></li>
+                        <li><a href="#">MLB</a></li>
+                        <li><a href="#">NHL</a></li>
+                        <li><a href="#">Soccer</a></li>
+                        <li><a href="#">College Football</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>News</h4>
+                    <ul>
+                        <li><a href="#">Headlines</a></li>
+                        <li><a href="#">Rumors</a></li>
+                        <li><a href="#">Transactions</a></li>
+                        <li><a href="#">Injuries</a></li>
+                        <li><a href="#">Power Rankings</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Video</h4>
+                    <ul>
+                        <li><a href="#">Highlights</a></li>
+                        <li><a href="#">Analysis</a></li>
+                        <li><a href="#">Interviews</a></li>
+                        <li><a href="#">Documentaries</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Fantasy</h4>
+                    <ul>
+                        <li><a href="#">Football</a></li>
+                        <li><a href="#">Basketball</a></li>
+                        <li><a href="#">Baseball</a></li>
+                        <li><a href="#">Hockey</a></li>
+                        <li><a href="#">Soccer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Advertise</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2025 ESPN. All rights reserved.</div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // SEO Enhancement: Structured Data
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add structured data for better SEO
+            const structuredData = {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "ESPN",
+                "url": "https://espn.com",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://espn.com/search?q={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                }
+            };
+            
+            const scriptTag = document.createElement('script');
+            scriptTag.type = 'application/ld+json';
+            scriptTag.text = JSON.stringify(structuredData);
+            document.head.appendChild(scriptTag);
+
+            // Lazy loading for images below the fold
+            if ('IntersectionObserver' in window) {
+                const lazyImages = document.querySelectorAll('img[data-src]');
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                            observer.unobserve(img);
+                        }
+                    });
+                });
+
+                lazyImages.forEach(img => {
+                    imageObserver.observe(img);
+                });
+            }
+
+            // Dynamic content loading for better user experience
+            window.addEventListener('scroll', function() {
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 1000) {
+                    // In a real implementation, this would load more content
+                    console.log('Load more content...');
+                }
+            });
+
+            // Random sports images from Unsplash
+            const sportsCategories = ['football', 'basketball', 'baseball', 'hockey', 'soccer', 'tennis'];
+            const newsCards = document.querySelectorAll('.news-card');
+            
+            newsCards.forEach((card, index) => {
+                const category = sportsCategories[index % sportsCategories.length];
+                const img = card.querySelector('img');
+                const newSrc = `https://source.unsplash.com/random/800x400/?${category},sports`;
+                
+                // Only change if not already set (to preserve initial relevant images)
+                if (!img.src.includes('unsplash')) {
+                    img.src = newSrc;
+                    img.alt = `${category} sports action`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
